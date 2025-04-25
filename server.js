@@ -93,8 +93,17 @@ async function startServer() {
         res.status(500).json({ message: "Internal server error" });
       }
     });
-    
 
+    app.get('/locations', async (req, res) => {
+      try {
+          const locations = await locationsCollection.find({}).toArray();
+          res.json(locations);
+      } catch (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Failed to fetch locations' });
+      }
+    });
+    
     // Start listening
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 Server running at http://localhost:${PORT}`);
