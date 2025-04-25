@@ -104,6 +104,16 @@ async function startServer() {
           res.status(500).json({ error: 'Failed to fetch locations' });
       }
     });
+
+    app.get('/vouchers', async (req, res) => {
+      try {
+          const vouchers = await db.collection('vouchers').find().toArray();
+          res.json(vouchers);
+      } catch (err) {
+          console.error(err);
+          res.status(500).send('Server error');
+      }
+    });
     
     // Start listening
     app.listen(PORT, '0.0.0.0', () => {
