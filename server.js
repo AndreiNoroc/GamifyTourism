@@ -107,7 +107,7 @@ async function startServer() {
 
     app.get('/vouchers', async (req, res) => {
       try {
-          const vouchers = await db.collection('vouchers').find().toArray();
+          const vouchers = await db.collection('tickets').find().toArray();
           res.json(vouchers);
       } catch (err) {
           console.error(err);
