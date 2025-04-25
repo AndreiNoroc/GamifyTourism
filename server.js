@@ -30,6 +30,7 @@ async function startServer() {
 
     const db = client.db("smarttourism");
     const usersCollection = db.collection("users");
+    const locationsCollection = db.collection("spots");
 
     // POST /register
     app.post('/register', async (req, res) => {
