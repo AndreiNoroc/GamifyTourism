@@ -179,7 +179,7 @@ async function startServer() {
     });
 
     const openai = new OpenAI({
-      apiKey: 'NBLHMUSP9UfuZ69FieLvT3BlbkFJQ11HJdNcuhnVG4cw45JN',
+      apiKey: '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',
     });
 
     // POST /recommend-location
