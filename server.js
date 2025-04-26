@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const { Configuration, OpenAIApi } = require('openai');
+const OpenAI = require('openai');
 
 const app = express();
 const PORT = 8080;
@@ -178,11 +178,9 @@ async function startServer() {
       }
     });
 
-
-    // Configure OpenAI
-    const openai = new OpenAIApi(new Configuration({
-      apiKey: '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', 
-    }));
+    const openai = new OpenAI({
+      apiKey: 'NBLHMUSP9UfuZ69FieLvT3BlbkFJQ11HJdNcuhnVG4cw45JN',
+    });
 
     // POST /recommend-location
     app.post('/recommend-location', async (req, res) => {
@@ -214,7 +212,7 @@ async function startServer() {
         Respond in 1-2 sentences.`;
 
         // Call OpenAI API
-        const completion = await openai.createChatCompletion({
+        const completion = await openai.chat.completions.create({
           model: 'gpt-3.5-turbo',
           messages: [
             { role: 'system', content: 'You are a helpful travel assistant.' },
