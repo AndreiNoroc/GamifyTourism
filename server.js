@@ -114,6 +114,47 @@ async function startServer() {
           res.status(500).send('Server error');
       }
     });
+    // POST /visit-location
+    app.post('/visit-location', async (req, res) => {
+      try {
+        const { username, locationName } = req.body;
+
+        if (!username || !locationName) {
+          return res.status(400).json({ error: 'Missing username or locationName' });
+        }
+
+        // Find user
+        const user = await usersCollection.findOne({ username });
+        if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Find location
+        const location = await locationsCollection.findOne({ name: locationName });
+        if (!location) {
+          return res.status(404).json({ error: 'Location not found' });
+        }
+
+        // Update user's score
+        const newUserScore = (user.score || 0) + (location.score || 0);
+        await usersCollection.updateOne(
+          { username },
+          { $set: { score: newUserScore } }
+        );
+
+        // Update location's score (decrease by 0.1, minimum 0 to avoid negative scores if you want)
+        const newLocationScore = Math.max((location.score || 0) - 1, 0);
+        await locationsCollection.updateOne(
+          { name: locationName },
+          { $set: { score: newLocationScore } }
+        );
+
+        res.status(200).json({ message: 'Score updated successfully', newUserScore, newLocationScore });
+      } catch (error) {
+        console.error('Error in /visit-location:', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
     
     // Start listening
     app.listen(PORT, '0.0.0.0', () => {
