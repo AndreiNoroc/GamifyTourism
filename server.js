@@ -213,7 +213,7 @@ async function startServer() {
 
         // Call OpenAI API
         const completion = await openai.chat.completions.create({
-          model: 'gpt-3.5-turbo',
+          model: 'gpt-4o',
           messages: [
             { role: 'system', content: 'You are a helpful travel assistant.' },
             { role: 'user', content: prompt }
@@ -221,7 +221,7 @@ async function startServer() {
           max_tokens: 150
         });
 
-        const recommendation = completion.data.choices[0].message.content.trim();
+        const recommendation = completion.choices[0].message.content;
 
         res.status(200).json({ recommendation });
       } catch (error) {
