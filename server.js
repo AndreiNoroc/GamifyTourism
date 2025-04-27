@@ -11,6 +11,8 @@ const PORT = 8080;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+
 
 // MongoDB URI
 const uri = "mongodb+srv://andrei:andrei@cluster0.mgnrlde.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
