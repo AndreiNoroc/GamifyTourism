@@ -233,7 +233,7 @@ async function startServer() {
     });
 
     // 🔥 Endpoint: returnează visitedLocations pentru un user
-    app.get('/get-visited-locations', async (req, res) => {
+    app.post('/get-visited-locations', async (req, res) => {
       try {
         const { username } = req.body;
 
