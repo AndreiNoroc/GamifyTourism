@@ -274,7 +274,7 @@ async function startServer() {
         }
     
         // Find voucher
-        const voucher = await ticketsCollection.findOne({ description: voucherName });
+        const voucher = await db.collection('tickets').findOne({ description: voucherName });
         if (!voucher) {
           return res.status(404).json({ error: 'Voucher not found' });
         }
