@@ -259,6 +259,44 @@ async function startServer() {
       }
     });
 
+    app.post('/claim-voucher', async (req, res) => {
+      try {
+        const { username, voucherName } = req.body;
+    
+        if (!username || !voucherName) {
+          return res.status(400).json({ error: 'Missing username or voucherName' });
+        }
+    
+        // Find user
+        const user = await usersCollection.findOne({ username });
+        if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+        }
+    
+        // Find voucher
+        const voucher = await ticketsCollection.findOne({ description: voucherName });
+        if (!voucher) {
+          return res.status(404).json({ error: 'Voucher not found' });
+        }
+    
+        // Check user has enough points
+        if ((user.score || 0) < voucher.points) {
+          return res.status(400).json({ error: 'Not enough points' });
+        }
+    
+        // Update user's score
+        const newScore = (user.score || 0) - voucher.points;
+        await usersCollection.updateOne({ username }, { $set: { score: newScore } });
+    
+        res.status(200).json({ message: 'Voucher claimed successfully' });
+      } catch (error) {
+        console.error('Error claiming voucher:', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+    
+  
+
     
     // Start listening
     app.listen(PORT, '0.0.0.0', () => {
