@@ -259,7 +259,18 @@ async function startServer() {
       }
     });
 
-    
+    app.get('/challenges', async (req, res) => {
+      try {
+        const challenges = await db.collection('challenges')
+          .find({}, { projection: { _id: 0, title: 1, points: 1 } })
+          .toArray();
+        res.status(200).json(challenges);
+      } catch (error) {
+        console.error('Error fetching challenges:', error);
+        res.status(500).json({ error: 'Failed to fetch challenges' });
+      }
+    });
+  
     // Start listening
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 Server running at http://localhost:${PORT}`);
