@@ -232,6 +232,33 @@ async function startServer() {
       }
     });
 
+    // 🔥 Endpoint: returnează visitedLocations pentru un user
+    app.get('/get-visited-locations', async (req, res) => {
+      try {
+        const { username } = req.body;
+
+        if (!username) {
+          return res.status(400).json({ error: 'Username is required' });
+        }
+
+        // Căutăm userul după username
+        const user = await usersCollection.findOne({ username });
+
+        if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Returnăm array-ul de visitedLocations
+        const visitedLocations = user.visitedLocations || [];
+
+        res.status(200).json({ visitedLocations });
+
+      } catch (error) {
+        console.error('❌ Error in /get-visited-locations:', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    });
+
     
     // Start listening
     app.listen(PORT, '0.0.0.0', () => {
