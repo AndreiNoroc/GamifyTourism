@@ -91,18 +91,6 @@ Tourism can be more than just visiting places—it can be an adventure. GamifyTo
 4. **Gamification**: Users earn points, climb leaderboards, and unlock vouchers.
 5. **Companion Features**: The watch app provides quick access to essential features.
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Commit your changes and push them to your fork.
-4. Submit a pull request with a detailed description of your changes.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
 ## Acknowledgments
 
 - [ESP-IDF](https://github.com/espressif/esp-idf) for the beacon implementation.
