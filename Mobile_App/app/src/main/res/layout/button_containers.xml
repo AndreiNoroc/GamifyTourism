@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" xmlns:map="http://schemas.android.com/apk/res-auto">
+    <!-- Container pentru toate butoanele -->
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp">
+
+        <!-- Buton Auth pentru a deschide Login/Register -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_auth_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@android:drawable/ic_lock_idle_lock"
+            android:contentDescription="Auth Menu"
+            map:backgroundTint="@color/purple_500" />
+
+        <!-- Container pentru login/register -->
+        <LinearLayout
+            android:id="@+id/auth_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@android:drawable/ic_input_add"
+                android:contentDescription="Register"
+                map:backgroundTint="@color/teal_700" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_input_get"
+                android:contentDescription="Login"
+                map:backgroundTint="@color/teal_700" />
+        </LinearLayout>
+
+        <!-- Buton Leaderboard (vizibil doar când ești logat) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@android:drawable/ic_dialog_info"
+            android:contentDescription="Leaderboard"
+            android:visibility="gone"
+            map:backgroundTint="@color/purple_500" />
+
+        <!-- Buton Logout (vizibil doar când ești logat) -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:src="@android:drawable/ic_lock_power_off"
+            android:contentDescription="Logout"
+            android:visibility="gone"
+            map:backgroundTint="@color/teal_700" />
+    </LinearLayout>
+</merge>

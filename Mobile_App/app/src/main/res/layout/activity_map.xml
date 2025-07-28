@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/top_container"
+        android:orientation="vertical"
+        android:layout_gravity="top|start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <TextView
+            android:id="@+id/text_logged_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logged in as: -"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:background="@android:color/holo_blue_light"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/text_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Score: -"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            android:background="@android:color/holo_green_light"
+            android:padding="8dp"
+            android:textColor="@android:color/white"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_lock_power_off"
+            android:contentDescription="Logout"
+            map:backgroundTint="#DB4437"
+            android:visibility="gone"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/_4295225_trophy"
+            android:contentDescription="Leaderboard"
+            app:backgroundTint="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_voucher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_card_giftcard_24"
+            android:contentDescription="Vouchers"
+            app:backgroundTint="#FFD700"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_visited_locations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_bookmark_24"
+            android:contentDescription="Visited Locations"
+            map:backgroundTint="#2196F3"
+            android:layout_marginBottom="8dp" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_auth_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_lock_idle_lock"
+            android:contentDescription="Auth Menu"
+            map:backgroundTint="#DB4437"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/auth_options"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_user"
+                android:contentDescription="Login"
+                app:backgroundTint="#2196F3"
+                android:layout_marginEnd="8dp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/baseline_add_24"
+                android:contentDescription="Register"
+                app:backgroundTint="#4CAF50" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,27 @@
+Done:
+- login/register/logout system - mobile app
+- map - mobile app
+- score and logged in as messages - mobile app
+- leaderboard - mobile app
+- move backend in google cloud - backend app
+- show the actual location on map - mobile app
+- add points for every tourist attraction on map - mobile app
+- vouchers unlock when collect an amount of points when logged in - mobile app
+- system of collecting points from map and update the databases for users and tourist attractions - mobile app + embedded app
+- made embedded behave like a beacon(when around collect points) - embedded app
+- visited location lists - mobile app
+- notification system, receive notifications when collect new spot and for recommendations (ONLY TOASTS) - mobile app
+- app for smarwatch with score, map, and details - smarwatch app
+
+
+In progress:
+- design mobile app
+- presentation
+- trailer
+- refinements
+
+
+
+To do:
+- different color marker visited location - mobile app
+- collect points on travelling (by foot, by taxi, by train), meaning update database for users when an amount of travelling is reached - mobile app
